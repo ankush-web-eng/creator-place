@@ -1,3 +1,5 @@
+import FAQSection from "@/components/pages/FAQSection";
+import Hero from "@/components/pages/hero";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -8,6 +10,9 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <div></div>
+    <div>
+      <Hero />
+      <FAQSection />
+    </div>
   )
 }
