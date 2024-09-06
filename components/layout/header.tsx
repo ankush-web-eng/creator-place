@@ -7,6 +7,7 @@ import { CiSearch, CiShoppingCart, CiCircleInfo, CiHeadphones } from "react-icon
 import { FaUser } from "react-icons/fa";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { IoIosArrowUp } from "react-icons/io";
+import { signOut, useSession } from 'next-auth/react';
 
 const NavLinks: React.FC = () => {
   const [isFocused, setIsFocused] = useState(false);
@@ -54,6 +55,16 @@ const Navbar: React.FC = () => {
     setIsOpen(!isOpen);
   };
 
+  const { data: session } = useSession();
+
+  const handleAuth = () => {
+    if (session?.user) {
+      signOut();
+    } else {
+      window.location.href = '/signin';
+    }
+  }
+
   return (
     <nav className="fixed z-50 backdrop-blur-3xl top-5 left-1/2 transform -translate-x-1/2 w-[65%] bg-gray-100 text-black rounded-full px-5 py-1 flex justify-between items-center lg:w-[65%]">
       <Link href={'/dashboard'} className="text-black flex space-x-2 font-bold items-center">
@@ -68,7 +79,7 @@ const Navbar: React.FC = () => {
           {hidden ? <MdKeyboardArrowDown size={20} /> : <IoIosArrowUp size={20} />}
           <div className={`${hidden ? "hidden" : "flex flex-col space-y-2"} absolute left-0 top-full mt-1 bg-gray-100 opacity-80 backdrop-blur-xl z-50 shadow-lg rounded-lg`}>
             <span className='hover:bg-gray-300 rounded-xl px-3 py-1'>Profile</span>
-            <span className='hover:bg-gray-300 rounded-xl px-3 py-1'>Login</span>
+            <span onClick={handleAuth} className='hover:bg-gray-300 rounded-xl px-3 py-1'>{session?.user ? 'Logout' : 'Login'}</span>
           </div>
         </div>
       </div>
