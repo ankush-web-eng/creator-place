@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 
 const SignupForm = dynamic(() => import("@/components/auth/SignUp"), { ssr: false });
 
-export const metdadata: Metadata = {
+export const metadata: Metadata = {
     title: "Sign Up",
     description: "Sign up to create an account"
 }

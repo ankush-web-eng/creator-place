@@ -1,0 +1,62 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String        @id @default(auto()) @map("_id") @db.ObjectId
+  name         String
+  email        String        @unique
+  password     String
+  phone        String?
+  image        String?
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  addressId    String?       @db.ObjectId
+  storeId      String?       @db.ObjectId
+  bankId       String?       @db.ObjectId
+  CreatorStore CreatorStore?
+  Bank         Bank?
+  Address      Address?
+}
+
+model CreatorStore {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  image     String?
+  url       String?
+  instagram String?
+  youtube   String?
+  genre     String?
+  bio       String?
+  updatedAt DateTime @updatedAt
+  userId    String   @unique @db.ObjectId
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+model Bank {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  name      String?
+  account   String?
+  ifsc      String?
+  pan       String?
+  updatedAt DateTime @updatedAt
+  userId    String   @unique @db.ObjectId
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+model Address {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  appartment String?
+  area       String?
+  zip        String?
+  city       String?
+  state      String?
+  country    String?
+  updatedAt  DateTime @updatedAt
+  userId     String?  @unique @db.ObjectId
+  user       User?    @relation(fields: [userId], references: [id])
+}

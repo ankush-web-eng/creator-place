@@ -7,6 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { LuLoader } from "react-icons/lu";
 import { useState } from "react";
 import axios from "axios";
+import { useToast } from "@/hooks/use-toast";
 
 type VerifyFormData = z.infer<typeof VerifySchema>;
 
@@ -14,6 +15,7 @@ const VerifyAccount = () => {
 
     const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
     const [success, setSuccess] = useState<boolean>(false);
+    const { toast } = useToast();
     const { register, handleSubmit, formState: { errors } } = useForm<VerifyFormData>({
         resolver: zodResolver(VerifySchema),
     });
@@ -28,7 +30,11 @@ const VerifyAccount = () => {
                 console.log(formData);
                 const response = await axios.post('/api/signup', formData);
                 if (response.status === 201) {
-                    alert('Account created successfully');
+                    toast({
+                        title: 'Success',
+                        description: 'Account created successfully',
+                        duration: 2000,
+                    });
                     localStorage.removeItem('signupData');
                     setSuccess(true);
                     setTimeout(() => {

@@ -9,18 +9,54 @@ import { FaGoogle } from 'react-icons/fa';
 
 import { signinSchema } from '@/schema/SignInSchema';
 import { LuLoader } from 'react-icons/lu';
+import { signIn } from 'next-auth/react';
+import { useToast } from '@/hooks/use-toast';
 
 type SignupFormData = z.infer<typeof signinSchema>;
 
 const SignupForm = () => {
     const [isSubmitted, setIsSubmitted] = useState(false);
+    const { toast } = useToast();
+
     const { register, handleSubmit, formState: { errors } } = useForm<SignupFormData>({
         resolver: zodResolver(signinSchema),
     });
 
     const onSubmit = async (data: SignupFormData) => {
-        alert(JSON.stringify(data));
-        setIsSubmitted(true);
+        try {
+            console.log("data: ", data);
+            console.log("data: ", data.email, data.password);
+            const result = await signIn('credentials', {
+                redirect: false,
+                identifier: data.email,
+                password: data.password,
+            });
+            if (result?.error) {
+                if (result.error === 'CredentialsSignin') {
+                    toast({
+                        title: 'Login Failed',
+                        description: 'Incorrect username or password',
+                        variant: 'destructive',
+                    });
+                } else {
+                    toast({
+                        title: 'Error',
+                        description: result.error,
+                        variant: 'destructive',
+                    });
+                }
+            }
+            if (result?.url) {
+                setIsSubmitted(true);
+
+            }
+        } catch {
+            toast({
+                title: 'Error',
+                description: 'Server Error occurred. Please try again after some time.',
+                variant: 'destructive',
+            });
+        }
     };
 
     return (
@@ -42,7 +78,7 @@ const SignupForm = () => {
                         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
 
                             <div className='py-4 flex justify-center items-center'>
-                                <button className='flex space-x-2 px-3 py-2 rounded-xl items-center border border-black w-full justify-center'>
+                                <button onClick={() => signIn('google')} className='flex space-x-2 px-3 py-2 rounded-xl items-center border border-black w-full justify-center'>
                                     <FaGoogle className='text-2xl' />
                                     <span className='text-lg font-semibold'>Sign in with Google</span>
                                 </button>
@@ -88,7 +124,7 @@ const SignupForm = () => {
                                     type="submit"
                                     className='w-fit px-3 py-1 rounded-full border border-black'
                                 >
-                                    {isSubmitted ? <LuLoader className='animate-spin'/> : 'Login'}
+                                    {isSubmitted ? <LuLoader className='animate-spin' /> : 'Login'}
                                 </button>
                             </div>
                         </form>
