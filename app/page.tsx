@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <div>
+    <div className="space-y-2">
       <Hero />
       <ItinarySection />
       <StepsTimeline />
