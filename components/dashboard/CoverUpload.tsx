@@ -4,11 +4,10 @@ import { useEffect, useRef, useState } from "react";
 import { FaRegEdit } from 'react-icons/fa';
 import { useToast } from "@/hooks/use-toast";
 import { LuLoader2 } from "react-icons/lu";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import axios from "axios";
 import { useCreator } from "@/context/CreatorContext";
 
-export default function ProfileAvatar() {
+export default function CoverPhoto() {
     const { data: session } = useSession();
     const [imageSrc, setImageSrc] = useState<string | ArrayBuffer | null>(null);
     const [loading, setLoading] = useState(false);
@@ -17,11 +16,14 @@ export default function ProfileAvatar() {
     const { toast } = useToast();
 
     useEffect(() => {
-        if (!creator?.image) {
-            updateCreator();
+        updateCreator();
+    }, [updateCreator]);
+
+    useEffect(() => {
+        if (creator) {
+            setImageSrc(creator?.CreatorStore?.image as string);
         }
-        setImageSrc(creator?.image as string);
-    }, [creator?.image, updateCreator]);
+    }, [creator]);
 
     const handleClick = () => {
         if (imageRef.current) {
@@ -52,7 +54,7 @@ export default function ProfileAvatar() {
                 formData.append('email', session?.user?.email as string);
 
                 try {
-                    const response = await axios.post('/api/photoUpload', formData, {
+                    const response = await axios.post('/api/update/cover', formData, {
                         headers: {
                             'Content-Type': 'multipart/form-data'
                         }
@@ -61,7 +63,7 @@ export default function ProfileAvatar() {
                     if (response.status === 200) {
                         toast({
                             title: 'Success',
-                            description: 'Profile picture updated successfully',
+                            description: 'Cover picture updated successfully',
                             duration: 2000,
                         });
                     } else {
@@ -88,23 +90,19 @@ export default function ProfileAvatar() {
 
     return (
         <div className="flex items-center space-x-6 flex-col space-y-6 p-6 justify-center w-full">
-            <div className="rounded-full h-36 w-36 flex justify-center items-center">
-                <div className="rounded-full p-1">
-                    {imageSrc ? (
-                        <Image
-                            src={imageSrc as string}
-                            alt={creator?.name || "User"}
-                            width={150}
-                            height={150}
-                            className="rounded-full object-cover"
-                            unoptimized
-                        />
-                    ) : (
-                        <Avatar className="h-full w-full">
-                            <AvatarFallback className="bg-gray-200 text-xl rounded-full">{session?.user?.name?.substring(0, 1)}</AvatarFallback>
-                        </Avatar>
-                    )}
-                </div>
+            <div className="rounded-md p-4 w-[70%] h-[150px] flex justify-center items-center">
+                {imageSrc ? (
+                    <Image
+                        src={imageSrc as string}
+                        alt={creator?.name || "User"}
+                        width={500} 
+                        height={150}
+                        className="object-cover w-full h-full rounded-md"
+                        unoptimized
+                    />
+                ) : (
+                    ''
+                )}
             </div>
             <input
                 ref={imageRef}
@@ -119,7 +117,7 @@ export default function ProfileAvatar() {
                 ) : (
                     <button type="button" onClick={handleClick} className="bg-white rounded-full p-1 flex space-x-2 hover:text-indigo-400 items-center justify-center">
                         <FaRegEdit color="blue" />
-                        <span>Change profile picture</span>
+                        <span>Change cover picture</span>
                     </button>
                 )}
             </p>

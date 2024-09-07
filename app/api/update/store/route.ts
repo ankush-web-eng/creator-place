@@ -6,7 +6,7 @@ const prisma = new PrismaClient();
 
 export async function POST(req: NextRequest) {
     try {
-        const { email, url, instagram, youtube, genre, bio, name, account, ifsc, pan } = await req.json();
+        const { email, instagram, youtube, url, genre, account, pan, gst } = await req.json();
 
         const isUser = await prisma.user.findUnique({
             where: {
@@ -28,7 +28,6 @@ export async function POST(req: NextRequest) {
                     instagram,
                     youtube,
                     genre,
-                    bio
                 }
             }),
             prisma.bank.update({
@@ -36,10 +35,9 @@ export async function POST(req: NextRequest) {
                     userId: isUser.id,
                 },
                 data: {
-                    name,
                     account,
-                    ifsc,
-                    pan
+                    pan,
+                    gst,
                 }
             })
         ]);
@@ -47,7 +45,7 @@ export async function POST(req: NextRequest) {
         const path = req.nextUrl.searchParams.get("path") || "/";
         revalidatePath(path);
 
-        return NextResponse.json({ success: true, message: "Account created successfully" }, { status: 201 });
+        return NextResponse.json({ success: true, message: "Store updated successfully" }, { status: 201 });
 
     } catch (error) {
         console.error(error);
