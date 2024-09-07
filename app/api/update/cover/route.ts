@@ -43,9 +43,9 @@ export async function POST(req: NextRequest) {
             return NextResponse.json({ success: false, message: "User not found!" }, { status: 404 });
         }
 
-        await prisma.user.update({
+        await prisma.creatorStore.update({
             where: {
-                email
+                userId: user.id
             },
             data: {
                 image: url

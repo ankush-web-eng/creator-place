@@ -59,7 +59,7 @@ export default function Page() {
     return (
         <div className="min-h-screen w-[40%] flex justify-center items-center">
             <div className="border-black border-2 rounded-xl px-8 py-6 flex space-y-5 flex-col w-full">
-                <h1 className="text-2xl font-bold text-green-950">Profile</h1>
+                <h1 className="text-2xl font-bold text-green-950">Creator Store</h1>
                 <form onSubmit={handleSubmit} className="flex flex-col space-y-2" >
                     <div className="flex flex-col space-y-2">
                         <label htmlFor="fullName" className="font-semibold text-xl">

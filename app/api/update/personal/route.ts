@@ -35,7 +35,7 @@ export async function POST(req: NextRequest) {
         const path = req.nextUrl.searchParams.get("path") || "/";
         revalidatePath(path);
 
-        return NextResponse.json({ success: true, message: "Account created successfully" }, { status: 201 });
+        return NextResponse.json({ success: true, message: "Account updated successfully" }, { status: 201 });
 
     } catch (error) {
         console.error(error);

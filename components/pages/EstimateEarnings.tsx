@@ -44,7 +44,7 @@ const EstimateEarnings: React.FC = () => {
                             onChange={(e) => setFollowers(Number(e.target.value))}
                             className="w-full"
                         />
-                        <div className="text-center mt-2 shadow-xl drop-shadow-xl rounded-xl bg-white w-fit p-2">{followers.toLocaleString()} Followers</div>
+                        <div className="text-center mt-2 shadow-xl drop-shadow-xl rounded-xl bg-white w-fit p-2">{followers} Followers</div>
                     </div>
 
                     <div className="mb-6 flex flex-col justify-center items-center">
@@ -71,11 +71,11 @@ const EstimateEarnings: React.FC = () => {
                 <div className="w-full lg:w-1/3 p-8 rounded-lg flex flex-col justify-center items-center">
                     <div className="flex flex-col items-center mb-6">
                         <h3 className="text-xl font-semibold">Monthly Earning</h3>
-                        <p className="text-3xl font-bold text-teal-500">₹{monthlyEarning.toLocaleString()}</p>
+                        <p className="text-3xl font-bold text-teal-500">₹{monthlyEarning}</p>
                     </div>
                     <div className="flex flex-col items-center">
                         <h3 className="text-xl font-semibold">Yearly Earning</h3>
-                        <p className="text-3xl font-bold text-teal-500">₹{yearlyEarning.toLocaleString()}</p>
+                        <p className="text-3xl font-bold text-teal-500">₹{yearlyEarning}</p>
                     </div>
                 </div>
             </div>

@@ -6,7 +6,7 @@ const prisma = new PrismaClient();
 
 export async function POST(req: NextRequest) {
     try {
-        const { email, image, url, instagram, youtube, genre, bio, name, account, ifsc, pan } = await req.json();
+        const { email, url, instagram, youtube, genre, bio, name, account, ifsc, pan } = await req.json();
 
         const isUser = await prisma.user.findUnique({
             where: {
@@ -24,7 +24,6 @@ export async function POST(req: NextRequest) {
                     userId: isUser.id,
                 },
                 data: {
-                    image,
                     url,
                     instagram,
                     youtube,
