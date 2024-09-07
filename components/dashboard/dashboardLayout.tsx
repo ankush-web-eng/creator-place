@@ -4,6 +4,7 @@ import { useCreator } from "@/context/CreatorContext";
 import ProfileAvatar from "./AvatarUpload";
 import Link from "next/link";
 import { signOut } from "next-auth/react";
+import { usePathname } from 'next/navigation';
 
 const Links = [
     {
@@ -25,11 +26,12 @@ const Links = [
 ];
 
 const DashboardLinks = () => {
+    const pathname = usePathname();
 
     return (
         <div className="flex space-y-5 flex-col">
             {Links.map((link, index) => {
-                const isActive = window.location.pathname === link.path;
+                const isActive = pathname === link.path;
                 return (
                     <Link 
                         key={index} 
