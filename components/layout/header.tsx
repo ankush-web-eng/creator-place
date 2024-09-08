@@ -67,7 +67,7 @@ const Navbar: React.FC = () => {
 
   return (
     <nav className="fixed z-50 backdrop-blur-3xl top-5 left-1/2 transform -translate-x-1/2 w-[65%] bg-gray-100 text-black rounded-full px-5 py-1 flex justify-between items-center lg:w-[65%]">
-      <Link href={'/dashboard'} className="text-black flex space-x-2 font-bold items-center">
+      <Link href={'/'} className="text-black flex space-x-2 font-bold items-center">
         <Image src='/vyb-icon.png' alt='VYB Icon' width={20} height={20} className='h-6 w-10' fetchPriority='high' loading='lazy' />
         <span className='font-bold text-xl'>VYB Store</span>
       </Link>
@@ -77,8 +77,8 @@ const Navbar: React.FC = () => {
         <div className='relative border rounded-xl flex space-x-3 border-black p-2 cursor-pointer' onClick={() => setHidden(!hidden)}>
           <FaUser size={20} />
           {hidden ? <MdKeyboardArrowDown size={20} /> : <IoIosArrowUp size={20} />}
-          <div className={`${hidden ? "hidden" : "flex flex-col space-y-2"} absolute left-0 top-full mt-1 bg-gray-100 opacity-80 backdrop-blur-xl z-50 shadow-lg rounded-lg`}>
-            <span className='hover:bg-gray-300 rounded-xl px-3 py-1'>Profile</span>
+          <div className={`${hidden ? "hidden" : "flex flex-col space-y-2"} absolute left-0 top-full mt-1 bg-gray-100 p-2 opacity-80 backdrop-blur-xl z-50 shadow-lg rounded-lg`}>
+            <Link href={'/profile/edit'} className='hover:bg-gray-300 rounded-xl px-3 py-1'>Profile</Link>
             <span onClick={handleAuth} className='hover:bg-gray-300 rounded-xl px-3 py-1'>{session?.user ? 'Logout' : 'Login'}</span>
           </div>
         </div>

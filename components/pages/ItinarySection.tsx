@@ -11,44 +11,45 @@ interface ItineraryProps {
 
 const Itinerary: React.FC<ItineraryProps> = ({ title, description, price, images }) => {
     return (
-        <div className="bg-teal-50 p-16 rounded-lg">
-            <div className="flex justify-between items-center mb-4 py-4">
-                <h1 className="text-3xl font-bold">Products</h1>
-                <div>
-                    <button className="bg-white text-gray-700 px-4 py-2 rounded-md mr-2 border-2">Itinerary</button>
-                    <button className="bg-teal-700 text-white px-4 py-2 rounded-md">Demo Store</button>
+        <div className="flex flex-col space-y-3 bg-teal-50 p-4 sm:p-6 md:p-8 lg:p-16 rounded-lg">
+            <div className="flex justify-between items-center mb-4 py-2 w-full">
+                <h1 className="text-xl sm:text-2xl md:text-3xl font-bold">Products</h1>
+                <div className='flex'>
+                    <button className="bg-white text-gray-700 text-xs sm:text-sm md:text-base p-1 sm:px-2 md:px-4 sm:py-1 md:py-2 rounded-md mr-2 border-2">Itinerary</button>
+                    <button className="bg-teal-700 text-white text-xs sm:text-sm md:text-base p-1 sm:px-2 md:px-4 sm:py-1 md:py-2 rounded-md">Demo Store</button>
                 </div>
             </div>
 
-            <div className="flex items-center py-8 justify-center">
-                <button className="bg-teal-700 text-white p-2 rounded-full mr-4">
-                    <ChevronLeft size={24} />
+            <div className="flex items-center justify-between">
+                <button className="bg-teal-700 text-white p-1 sm:p-2 rounded-full">
+                    <ChevronLeft size={16} className="sm:w-6 sm:h-6" />
                 </button>
 
-                <div className="flex-grow py-6 px-3">
-                    <h2 className="text-2xl font-semibold mb-2">{title}</h2>
-                    <p className="text-gray-600 mb-4">{description}</p>
+                <div className="flex-grow px-2 sm:px-4 max-w-[60%]">
+                    <h2 className="text-lg sm:text-xl md:text-2xl font-semibold mb-1 sm:mb-2">{title}</h2>
+                    <p className="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-4 max-md:hidden">{description}</p>
+                    <p className="md:hidden text-gray-600 text-xs sm:text-sm mb-2 sm:mb-4">{description.slice(0, 100)}...</p>
 
-                    <div className="flex items-center mb-4 py-6">
-                        <span className="bg-gray-200 text-gray-700 px-3 py-1 rounded-md mr-2">Rs. {price}</span>
-                        <button className="bg-teal-700 text-white px-4 py-1 rounded-md">More</button>
+                    <div className="flex items-center mt-2 sm:mt-4">
+                        <span className="bg-gray-200 text-gray-700 text-xs sm:text-sm px-2 py-1 rounded-md mr-2">Rs. {price}</span>
+                        <button className="bg-teal-700 text-white text-xs sm:text-sm px-2 sm:px-4 py-1 rounded-md">More</button>
                     </div>
                 </div>
 
-                <div className="relative w-1/3">
-                    <Image src={images[0]} alt="Delhi" width={40} height={40} className="w-full z-20 h-40 object-cover rounded-lg" />
-                    <Image src={images[1]} alt="Delhi" width={40} height={40} className="w-full h-40 object-cover rounded-lg absolute -bottom-12 z-0 -left-10" />
+                <div className="relative w-24 sm:w-32 md:w-40 lg:w-48">
+                    <Image src={images[0]} alt="Delhi" width={200} height={200} className="w-full h-auto object-cover rounded-lg" />
+                    <Image src={images[1]} alt="Delhi" width={200} height={200} className="w-full h-auto object-cover rounded-lg absolute -bottom-4 sm:-bottom-6 md:-bottom-8 z-0 -left-4 sm:-left-6 md:-left-8" />
                 </div>
 
-                <button className="bg-teal-700 text-white p-2 rounded-full ml-4">
-                    <ChevronRight size={24} />
+                <button className="bg-teal-700 text-white p-1 sm:p-2 rounded-full">
+                    <ChevronRight size={16} className="sm:w-6 sm:h-6" />
                 </button>
             </div>
         </div>
     );
 };
 
-const ItinarySection = () => {
+const ItinerarySection = () => {
     const delhiImages = [
         "/lotus_temple.png",
         "/india_gate.png",
@@ -64,4 +65,4 @@ const ItinarySection = () => {
     );
 }
 
-export default ItinarySection
+export default ItinerarySection;

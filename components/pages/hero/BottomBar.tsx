@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const BottomBar = () => {
     return (
-        <div className="lg:w-[65%] w-full grid grid-cols-2 lg:grid-cols-4 gap-4 shadow-xl drop-shadow-xl rounded-xl p-4">
+        <div className="lg:w-[65%] w-[75%] grid grid-cols-2 lg:grid-cols-4 gap-4 shadow-xl drop-shadow-xl drop-shadow-gray-200 rounded-xl p-4 -mt-5">
             <div className="flex justify-center">
                 <Image
                     src='/travel.png'
