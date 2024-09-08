@@ -57,7 +57,7 @@ const DashboardLayout = () => {
     const { creator } = useCreator();
 
     return (
-        <div className="md:w-[40%] h-screen flex items-center justify-center px-3 space-y-2 ml-6">
+        <div className="md:w-[40%] h-screen flex items-center justify-center px-3 space-y-2 ml-6 max-md:hidden">
             <div className="w-fit border-2 p-12 border-black rounded-xl">
                 <ProfileAvatar />
                 <h1 className="text-3xl text-center mb-2 font-bold">{creator?.name}</h1>

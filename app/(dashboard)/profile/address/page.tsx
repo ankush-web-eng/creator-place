@@ -69,7 +69,7 @@ export default function Page() {
     }
 
     return (
-        <div className="min-h-screen w-[40%] flex justify-center items-center">
+        <div className="min-h-screen md:w-[40%] w-full flex justify-center items-center">
             <div className="border-black border-2 rounded-xl px-8 py-6 flex space-y-5 flex-col w-full">
                 <h1 className="text-2xl font-bold text-green-950">Address</h1>
                 <form onSubmit={handleSubmit} className="flex flex-col space-y-2">
@@ -101,7 +101,7 @@ export default function Page() {
                             onChange={(e) => setArea(e.target.value)}
                         />
                     </div>
-                    <div className="flex justify-between">
+                    <div className="flex justify-between max-w-[80%]">
                         <div className="flex flex-col space-y-2">
                             <label htmlFor="zip" className="font-semibold text-xl">
                                 Zip Code
