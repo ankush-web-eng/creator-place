@@ -10,6 +10,7 @@ const BottomBar = () => {
                     width={100}
                     height={100}
                     className="h-20 w-20 lg:h-32 lg:w-32 object-contain"
+                    unoptimized
                 />
             </div>
             <div className="flex justify-center">
@@ -19,6 +20,7 @@ const BottomBar = () => {
                     width={100}
                     height={100}
                     className="h-20 w-20 lg:h-32 lg:w-32 object-contain"
+                    unoptimized
                 />
             </div>
             <div className="flex justify-center">
@@ -28,6 +30,7 @@ const BottomBar = () => {
                     width={100}
                     height={100}
                     className="h-20 w-20 lg:h-32 lg:w-32 object-contain"
+                    unoptimized
                 />
             </div>
             <div className="flex justify-center">
@@ -37,6 +40,7 @@ const BottomBar = () => {
                     width={100}
                     height={100}
                     className="h-20 w-20 lg:h-32 lg:w-32 object-contain"
+                    unoptimized
                 />
             </div>
         </div>

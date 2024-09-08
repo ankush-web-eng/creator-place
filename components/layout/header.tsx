@@ -84,7 +84,7 @@ const Navbar: React.FC = () => {
   return (
     <nav className="fixed z-50 backdrop-blur-md bg-white/30 shadow-lg top-5 left-1/2 transform -translate-x-1/2 w-[65%] rounded-full px-5 py-1 flex justify-between items-center lg:w-[65%]">
       <Link href={'/'} className="text-black flex space-x-2 font-bold items-center">
-        <Image src='/vyb-icon.png' alt='VYB Icon' width={20} height={20} className='h-6 w-10' fetchPriority='high' loading='lazy' />
+        <Image src='/vyb-icon.png' alt='VYB Icon' width={20} height={20} className='h-6 w-10' fetchPriority='high' loading='lazy' unoptimized />
         <span className='font-bold text-xl'>VYB Store</span>
       </Link>
 

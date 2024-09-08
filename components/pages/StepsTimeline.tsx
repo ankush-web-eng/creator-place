@@ -30,7 +30,7 @@ const Step: React.FC<StepProps> = ({ stepNumber, title, description, imageUrl, i
             <div className="flex-col flex w-64 sm:w-48 md:w-80 bg-[#E5F0F1] rounded-xl p-4 md:p-12 md:mr-6">
                 <h3 className="text-xl font-bold mb-2">{title}</h3>
                 <p className="text-gray-700 mb-4">{description}</p>
-                <Image src={imageUrl} alt={title} className="w-full rounded-md shadow-md" width={256} height={256} />
+                <Image src={imageUrl} alt={title} className="w-full rounded-md shadow-md" width={256} height={256} unoptimized />
             </div>
         </div>
     );

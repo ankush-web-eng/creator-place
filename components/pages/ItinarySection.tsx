@@ -37,8 +37,8 @@ const Itinerary: React.FC<ItineraryProps> = ({ title, description, price, images
                 </div>
 
                 <div className="relative w-24 sm:w-32 md:w-40 lg:w-48">
-                    <Image src={images[0]} alt="Delhi" width={200} height={200} className="w-full h-auto object-cover rounded-lg" />
-                    <Image src={images[1]} alt="Delhi" width={200} height={200} className="w-full h-auto object-cover rounded-lg absolute -bottom-4 sm:-bottom-6 md:-bottom-8 z-0 -left-4 sm:-left-6 md:-left-8" />
+                    <Image src={images[0]} alt="Delhi" width={200} height={200} className="w-full h-auto object-cover rounded-lg" unoptimized/>
+                    <Image src={images[1]} alt="Delhi" width={200} height={200} className="w-full h-auto object-cover rounded-lg absolute -bottom-4 sm:-bottom-6 md:-bottom-8 z-0 -left-4 sm:-left-6 md:-left-8" unoptimized/>
                 </div>
 
                 <button className="bg-[#003C3C] text-white p-1 sm:p-2 rounded-full">
