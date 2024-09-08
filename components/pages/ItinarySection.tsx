@@ -1,6 +1,6 @@
 import React from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
+import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 
 interface ItineraryProps {
     title: string;
@@ -11,18 +11,18 @@ interface ItineraryProps {
 
 const Itinerary: React.FC<ItineraryProps> = ({ title, description, price, images }) => {
     return (
-        <div className="flex flex-col space-y-3 bg-teal-50 p-4 sm:p-6 md:p-8 lg:p-16 rounded-lg">
+        <div className="flex flex-col space-y-3 bg-[#E5F0F1] p-4 sm:p-6 md:p-8 lg:p-16 rounded-lg">
             <div className="flex justify-between items-center mb-4 py-2 w-full">
                 <h1 className="text-xl sm:text-2xl md:text-3xl font-bold">Products</h1>
                 <div className='flex'>
                     <button className="bg-white text-gray-700 text-xs sm:text-sm md:text-base p-1 sm:px-2 md:px-4 sm:py-1 md:py-2 rounded-md mr-2 border-2">Itinerary</button>
-                    <button className="bg-teal-700 text-white text-xs sm:text-sm md:text-base p-1 sm:px-2 md:px-4 sm:py-1 md:py-2 rounded-md">Demo Store</button>
+                    <button className="bg-[#003C3C] text-white text-xs sm:text-sm md:text-base p-1 sm:px-2 md:px-4 sm:py-1 md:py-2 rounded-md">Demo Store</button>
                 </div>
             </div>
 
             <div className="flex items-center justify-between">
-                <button className="bg-teal-700 text-white p-1 sm:p-2 rounded-full">
-                    <ChevronLeft size={16} className="sm:w-6 sm:h-6" />
+                <button className="bg-[#003C3C] text-white p-1 sm:p-2 rounded-full">
+                    <FaArrowLeft size={16} className="sm:w-6 sm:h-6" />
                 </button>
 
                 <div className="flex-grow px-2 sm:px-4 max-w-[60%]">
@@ -32,7 +32,7 @@ const Itinerary: React.FC<ItineraryProps> = ({ title, description, price, images
 
                     <div className="flex items-center mt-2 sm:mt-4">
                         <span className="bg-gray-200 text-gray-700 text-xs sm:text-sm px-2 py-1 rounded-md mr-2">Rs. {price}</span>
-                        <button className="bg-teal-700 text-white text-xs sm:text-sm px-2 sm:px-4 py-1 rounded-md">More</button>
+                        <button className="bg-[#003C3C] text-white text-xs sm:text-sm px-2 sm:px-4 py-1 rounded-md">More</button>
                     </div>
                 </div>
 
@@ -41,8 +41,8 @@ const Itinerary: React.FC<ItineraryProps> = ({ title, description, price, images
                     <Image src={images[1]} alt="Delhi" width={200} height={200} className="w-full h-auto object-cover rounded-lg absolute -bottom-4 sm:-bottom-6 md:-bottom-8 z-0 -left-4 sm:-left-6 md:-left-8" />
                 </div>
 
-                <button className="bg-teal-700 text-white p-1 sm:p-2 rounded-full">
-                    <ChevronRight size={16} className="sm:w-6 sm:h-6" />
+                <button className="bg-[#003C3C] text-white p-1 sm:p-2 rounded-full">
+                    <FaArrowRight size={16} className="sm:w-6 sm:h-6" />
                 </button>
             </div>
         </div>

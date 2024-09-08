@@ -42,12 +42,12 @@ const FAQSection: React.FC = () => {
         </p>
         <div className="space-y-4">
           {faqItems.map((item, index) => (
-            <div key={index} className="bg-teal-50 rounded-lg">
+            <div key={index} className="bg-[#E5F0F1] rounded-lg">
               <button
                 className="flex justify-between items-center w-full p-4 text-left"
                 onClick={() => toggleFAQ(index)}
               >
-                <span className="font-medium text-gray-900">{item.question}</span>
+                <span className="font-medium text-[#003C3C]">{item.question}</span>
                 {openIndex === index ? (
                   <ChevronUp className="h-5 w-5 text-gray-500" />
                 ) : (
@@ -55,8 +55,8 @@ const FAQSection: React.FC = () => {
                 )}
               </button>
               {openIndex === index && (
-                <div className="p-4 bg-teal-100">
-                  <p className="text-gray-700">{item.answer}</p>
+                <div className="p-4 bg-[#E5F0F1]">
+                  <p className="text-[#003C3C]">{item.answer}</p>
                 </div>
               )}
             </div>

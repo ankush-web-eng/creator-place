@@ -15,11 +15,11 @@ const Step: React.FC<StepProps> = ({ stepNumber, title, description, imageUrl, i
     return (
         <div className="flex -row items-start mb-12 z-20 relative">
             <div className="flex-none w-12 mr-4 float-start">
-                <div className="bg-green-800 text-white w-12 h-12 flex justify-center items-center rounded-md text-xl font-bold relative z-10">
+                <div className="bg-[#003C3C] text-white w-12 h-12 flex justify-center items-center rounded-md text-xl font-bold relative z-10">
                     {stepNumber}
                 </div>
                 {!isLast && (
-                    <div className="absolute left-6 top-12 w-1 bg-green-200 h-full -z-10" />
+                    <div className="absolute left-10 top-12 w-[0.1rem] bg-[#003C3C] h-full -z-10" />
                 )}
             </div>
 
@@ -27,7 +27,7 @@ const Step: React.FC<StepProps> = ({ stepNumber, title, description, imageUrl, i
 
             </div>
 
-            <div className="flex-col flex w-64 sm:w-48 md:w-64 bg-teal-50 rounded-xl p-4 md:p-12 md:mr-6">
+            <div className="flex-col flex w-64 sm:w-48 md:w-80 bg-[#E5F0F1] rounded-xl p-4 md:p-12 md:mr-6">
                 <h3 className="text-xl font-bold mb-2">{title}</h3>
                 <p className="text-gray-700 mb-4">{description}</p>
                 <Image src={imageUrl} alt={title} className="w-full rounded-md shadow-md" width={256} height={256} />
@@ -67,10 +67,10 @@ const StepsTimeline: React.FC = () => {
     return (
         <div className="container mx-auto py-16 px-4 lg:px-8 flex flex-col lg:flex-row space-y-8 lg:space-y-0 lg:space-x-8">
             <div className="lg:w-1/3">
-                <div className="bg-green-800 p-4 flex flex-col space-y-5 w-full lg:w-fit h-fit rounded-xl lg:sticky lg:top-4">
+                <div className="bg-[#003C3C] p-4 flex flex-col space-y-5 w-full lg:w-fit h-fit rounded-xl lg:sticky lg:top-4">
                     <p className="text-white text-lg font-bold">Start Vybing with us!</p>
                     <p className="text-white">
-                        We help influencers make money by monetizing their travel plans, merchandise, and digital goods and many more.
+                        &quot;We help influencers make money by monetizing their travel plans, merchandise, and digital goods and many more.&quot;
                     </p>
                     <button className="rounded-xl bg-green-500 text-black p-4 w-fit">Join us</button>
                 </div>

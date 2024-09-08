@@ -12,6 +12,16 @@ import { signOut, useSession } from 'next-auth/react';
 const NavLinks: React.FC = () => {
   const [isFocused, setIsFocused] = useState(false);
 
+  const { data: session } = useSession();
+
+  const handleAuth = () => {
+    if (session?.user) {
+      signOut();
+    } else {
+      window.location.href = '/signin';
+    }
+  }
+
   return (
     <>
       <div className="relative">
@@ -43,6 +53,12 @@ const NavLinks: React.FC = () => {
         <CiHeadphones size={24} />
         <span className='font-semibold'>Contact</span>
       </Link>
+
+      <Link href={'/profile/edit'} className='hover:bg-gray-300 rounded-xl px-3 py-1 md:hidden'>Profile</Link>
+      <Link href={'/profile/earnings'} className='hover:bg-gray-300 rounded-xl px-3 py-1 md:hidden'>Dashboard</Link>
+      <Link href={'/profile/mystore'} className='hover:bg-gray-300 rounded-xl px-3 py-1 md:hidden'>My Store</Link>
+      <span onClick={handleAuth} className='hover:bg-gray-300 rounded-xl px-3 py-1 md:hidden'>{session?.user ? 'Logout' : 'Login'}</span>
+
     </>
   );
 };
@@ -79,6 +95,8 @@ const Navbar: React.FC = () => {
           {hidden ? <MdKeyboardArrowDown size={20} /> : <IoIosArrowUp size={20} />}
           <div className={`${hidden ? "hidden" : "flex flex-col space-y-2"} absolute left-0 top-full mt-1 bg-gray-100 p-2 opacity-80 backdrop-blur-xl z-50 shadow-lg rounded-lg`}>
             <Link href={'/profile/edit'} className='hover:bg-gray-300 rounded-xl px-3 py-1'>Profile</Link>
+            <Link href={'/profile/earnings'} className='hover:bg-gray-300 rounded-xl px-3 py-1'>Dashboard</Link>
+            <Link href={'/profile/mystore'} className='hover:bg-gray-300 rounded-xl px-3 py-1'>My Store</Link>
             <span onClick={handleAuth} className='hover:bg-gray-300 rounded-xl px-3 py-1'>{session?.user ? 'Logout' : 'Login'}</span>
           </div>
         </div>
